@@ -1,28 +1,22 @@
-
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class problemaDos {
-    public static void main(String[] args){
-        System.out.println("Please enter a positive number ... ");
-        Scanner INPUT = new Scanner(System.in);
+    public static void main(String[] args) throws FileNotFoundException {
         int number;
-        int maxNumber=0;
+        int maxNumber = 0;
         int potition = 0;
-        int[] numbers = new int[5];
-        for (int i = 0; i < numbers.length; i++)
-        {
-            System.out.println("Ingrese un numero");
-            if (!INPUT.hasNextInt()){
-                System.out.println("solo digite numeros");
-                INPUT.next();
-                i=i-1;
-            }else{
-                numbers[i] = INPUT.nextInt();
-            }
+        List<Integer> numbers = new ArrayList<>();
+        File doc = new File("src/file.txt");
+        Scanner obj = new Scanner(doc);
+        while (obj.hasNextLine()){
+            numbers.add(Integer.parseInt(obj.nextLine()));
         }
-        for (int i = 0; i < numbers.length; i++){
-            number = numbers[i];
+       for (int i = 0; i < numbers.size(); i++){
+            number = numbers.get(i);
             if(number > maxNumber)
             {
                 potition = i+1;
